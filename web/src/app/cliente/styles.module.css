@@ -1,0 +1,47 @@
+.main {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid red;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 0.8rem;
+
+  border: 1px solid #ccc;
+}
+.fieldset div {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.form .inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input {
+  padding: 0.8rem;
+}
+
+.form button {
+  margin-bottom: 0.8rem;
+
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+}
+@media (min-width: 768px) {
+  .main {
+    min-height: 90vh;
+  }
+}

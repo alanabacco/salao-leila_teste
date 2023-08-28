@@ -13,8 +13,8 @@
 Para executar o projeto de maneira local, primeiro você precisa ter o [NodeJS](https://nodejs.org/) e o [Git](https://git-scm.com/) instalados na sua máquina. Em seguida, execute os seguintes comandos, um de cada vez em um terminal:
 
 ```bash
-git clone https://github.com/alanabacco/salao-leila
-cd salao-leila
+git clone https://github.com/alanabacco/salao-leila_teste
+cd teste-salao-leila_teste
 cd web
 npm install
 npm run dev

@@ -1,0 +1,26 @@
+.main {
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.registerContainer {
+  max-width: 40rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .main {
+    min-height: 90vh;
+  }
+}
