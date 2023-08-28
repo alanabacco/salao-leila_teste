@@ -1,0 +1,33 @@
+{
+  "name": "salao-leila",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Alana Bacco",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanabacco/salao-leila"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "13.4.19",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^13.4.19",
+    "@types/node": "20.5.7",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "eslint": "^8.48.0",
+    "eslint-plugin-react": "^7.33.2",
+    "typescript": "5.2.2"
+  }
+}
