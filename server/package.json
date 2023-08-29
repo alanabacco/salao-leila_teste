@@ -18,6 +18,7 @@
     "migrate": "npx prisma migrate dev --skip-seed",
     "seed": "npx prisma db seed",
     "reset:db": "npx prisma migrate reset --skip-seed",
+    "reset:migrate:seed": "npx prisma migrate reset",
     "prisma:studio": "npx prisma studio",
     "lint": "npx eslint ./src"
   },

@@ -35,3 +35,5 @@ npx prisma studio
 ```
 
 Em seguida abrirá uma aba do navegador em http://localhost:5555/.
+
+<!-- Explicar o Seed e o Reset do banco de dados -->

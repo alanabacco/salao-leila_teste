@@ -10,10 +10,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model = tabelas do banco de dados
+// model = db tables
 model Clients {
+  id        Int         @id @default(autoincrement())
+  name      String      @db.VarChar(255)
+  phone     String      @unique @db.VarChar(11)
+  password  String      @db.VarChar(255)
+  Schedules Schedules[]
+}
+
+model Services {
+  id        Int         @id @default(autoincrement())
+  name      String      @unique @db.VarChar(255)
+  Schedules Schedules[]
+}
+
+model Schedules {
+  id         Int      @id @default(autoincrement())
+  client     Clients  @relation(fields: [client_id], references: [id])
+  client_id  Int
+  service    Services @relation(fields: [service_id], references: [id])
+  service_id Int
+  date_time  DateTime
+}
+
+model Admins {
   id       Int    @id @default(autoincrement())
-  name     String @db.VarChar(255)
-  phone    String @db.VarChar(255)
+  user     String @unique @db.VarChar(255)
   password String @db.VarChar(255)
 }
