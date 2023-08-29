@@ -9,11 +9,17 @@
     "url": "git+https://github.com/alanabacco/salao-leila_teste"
   },
   "private": true,
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "scripts": {
     "start": "node ./src/app.js",
     "dev": "nodemon ./src/app.js",
-    "migrate": "npx sequelize-cli db:migrate",
-    "seed": "npx sequelize-cli db:seed:all"
+    "migrate": "npx prisma migrate dev --skip-seed",
+    "seed": "npx prisma db seed",
+    "reset:db": "npx prisma migrate reset --skip-seed",
+    "prisma:studio": "npx prisma studio",
+    "lint": "npx eslint ./src"
   },
   "dependencies": {
     "@prisma/client": "^5.2.0",

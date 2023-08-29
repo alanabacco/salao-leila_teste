@@ -6,7 +6,6 @@
 
 - [NodeJS](https://nodejs.org/)
 - [Express](https://expressjs.com/)
-- [TypeScript](https://www.typescriptlang.org/)
 - [Prisma](https://www.prisma.io/)
 
 ## Como executar o projeto localmente
@@ -23,18 +22,16 @@ npm run dev
 
 estará rodando na porta 8080.
 
-<!-- Obs.: é preciso fazer a conexão com o banco de dados em: ./src/config/config.js -->
+Obs.: é preciso fazer a conexão com o banco de dados no arquivo .env
 
 - Banco de dados utilizado neste projeto: [postgresql](https://www.postgresql.org/).
 
-Você pode ver o banco de dados de forma visual utilizando o Prisma Studio:
+Você pode ver o banco de dados de forma visual utilizando o [Prisma Studio](https://www.prisma.io/studio):
 
-explicar o prisma studio aqui.... 
+Para rodar o prisma studio abra o terminal e execute o comando:
 
-<!--
-## Modelos de comandos úteis no projeto
+```bash
+npx prisma studio
+```
 
-- npx prisma migrate dev -> pra fazer a migração
-- npx prisma studio
-
--->
+Em seguida abrirá uma aba do navegador em http://localhost:5555/.
