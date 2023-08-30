@@ -3,37 +3,28 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, FormEvent, useState } from "react";
 import { authService } from "./services/authService";
+
+// TODO: colocar um alerta de login bem sucedido
+
+interface HomeProps extends React.ChangeEvent<HTMLFormElement> {
+  target: HTMLFormElement & {
+    phone: { value: string };
+    password: { value: string };
+  };
+}
 
 export default function Home(): JSX.Element {
   const router = useRouter();
 
-  const [values, setValues] = useState({
-    phone: "",
-    password: "",
-  });
-
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setValues((currentValue) => {
-      return {
-        ...currentValue,
-        [e.target.name]: e.target.value,
-      };
-    });
-  }
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: HomeProps) {
     e.preventDefault();
-    // router.push("/cliente");
-
     authService
       .clientLogin({
-        phone: values.phone,
-        password: values.password,
+        phone: e.target.phone.value,
+        password: e.target.password.value,
       })
       .then(() => {
-        // TODO: colocar um alerta de login bem sucedido
         router.push("/cliente");
       })
       .catch((error) => {
@@ -72,7 +63,6 @@ export default function Home(): JSX.Element {
                 minLength={11}
                 maxLength={11}
                 pattern="^[0-9]+$"
-                onChange={handleChange}
               />
             </div>
 
@@ -87,7 +77,6 @@ export default function Home(): JSX.Element {
                 id="password"
                 name="password"
                 minLength={6}
-                onChange={handleChange}
               />
             </div>
 

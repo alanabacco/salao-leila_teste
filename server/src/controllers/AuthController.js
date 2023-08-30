@@ -27,6 +27,25 @@ class AuthController {
       return res.status(401).send({ status: 401, message: error.message });
     }
   }
+
+  static async getClientSession(req, res, next) {
+    const name = req.name;
+    try {
+      if (name) {
+        res.status(200).json({
+          data: {
+            session: {
+              user: {
+                name,
+              },
+            },
+          },
+        });
+      }
+    } catch (error) {
+      res.status(401).json({ status: 401, message: "invalid access token" });
+    }
+  }
 }
 
 module.exports = AuthController;

@@ -5,6 +5,6 @@ const authenticator = require("../middlewares/authenticator");
 const router = Router();
 
 router.post("/clientLogin", AuthController.ClientLogin);
-// router.get("/clientSession", authenticator, AuthController.getClientSession);
+router.get("/clientSession", authenticator, AuthController.getClientSession);
 
 module.exports = router;

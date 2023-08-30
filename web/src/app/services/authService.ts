@@ -33,10 +33,8 @@ export const authService = {
       },
       method: "GET",
     };
-
     return fetch(`${backendUrl}/clientSession`, fetchOptions).then((res) => {
       if (!res.ok) throw new Error("not authorized");
-      console.log("res.body: ", res.body);
       return res.body;
     });
   },
