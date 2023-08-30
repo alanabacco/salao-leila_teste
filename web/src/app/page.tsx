@@ -3,14 +3,43 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
-import { FormEvent } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { authService } from "./services/authService";
 
 export default function Home(): JSX.Element {
   const router = useRouter();
 
+  const [values, setValues] = useState({
+    phone: "",
+    password: "",
+  });
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    setValues((currentValue) => {
+      return {
+        ...currentValue,
+        [e.target.name]: e.target.value,
+      };
+    });
+  }
+
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    router.push("/cliente");
+    // router.push("/cliente");
+
+    authService
+      .clientLogin({
+        phone: values.phone,
+        password: values.password,
+      })
+      .then(() => {
+        // TODO: colocar um alerta de login bem sucedido
+        router.push("/cliente");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("telefone ou senha inválidos.");
+      });
   }
 
   return (
@@ -24,7 +53,7 @@ export default function Home(): JSX.Element {
           <img src="https://placehold.co/500x300" alt="foto" />
           <p>
             Cabelos, unhas, hidratação e unha. Venha fazer suas unhas, seus cabelos, e até
-            mesmo hidratar suas madeixas de cabelo conosco.
+            mesmo hidratar suas madeixas de cabelo conosco. Tudo esterelizado.
           </p>
         </div>
 
@@ -43,6 +72,7 @@ export default function Home(): JSX.Element {
                 minLength={11}
                 maxLength={11}
                 pattern="^[0-9]+$"
+                onChange={handleChange}
               />
             </div>
 
@@ -57,6 +87,7 @@ export default function Home(): JSX.Element {
                 id="password"
                 name="password"
                 minLength={6}
+                onChange={handleChange}
               />
             </div>
 
@@ -64,6 +95,10 @@ export default function Home(): JSX.Element {
           </form>
           <p>
             Ainda não tem cadastro? <Link href="cliente/cadastrar">Criar cadastro</Link>
+          </p>
+          <p className={styles.info}>
+            Esse site usa cookies para suas informações de login, ao continuar usando o
+            site você afirma estar de acordo com o uso dos cookies.
           </p>
         </div>
       </main>

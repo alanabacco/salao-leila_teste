@@ -8,9 +8,9 @@ import Link from "next/link";
 export default function ClientRegisterPage(): JSX.Element {
   const router = useRouter();
 
-  const today: Date = new Date();
-  today.setDate(today.getDate() + 1);
-  const invertedDate = today.toLocaleDateString().split("/").reverse().join("-");
+  const minDate: Date = new Date();
+  minDate.setDate(minDate.getDate() + 1);
+  const invertedDate = minDate.toLocaleDateString().split("/").reverse().join("-");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,7 +25,7 @@ export default function ClientRegisterPage(): JSX.Element {
 
       <div>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <fieldset className={styles.fieldset}>
+          {/* <fieldset className={styles.fieldset}>
             <legend>Serviço</legend>
 
             <div>
@@ -50,9 +50,24 @@ export default function ClientRegisterPage(): JSX.Element {
 
             <div>
               <input type="checkbox" id="Toenails" name="Unhas dos pés" />
-              <label htmlFor="Toenails">Unhas dos pés</label>
+              <label htmlFor="toenails">Unhas dos pés</label>
             </div>
-          </fieldset>
+          </fieldset> */}
+
+          <div className={styles.inputContainer}>
+            <label htmlFor="service" className={styles.label}>
+              Serviço
+            </label>
+            <select name="service" id="service" required>
+              <option value="" selected disabled className={styles.emptyOption}>
+                Selecione uma opção
+              </option>
+              <option value="haircut">Corte de cabelo</option>
+              <option value="hairdress">Penteado</option>
+              <option value="fingernails">Unhas das mãos</option>
+              <option value="toenails">Unhas dos pés</option>
+            </select>
+          </div>
 
           <div className={styles.inputContainer}>
             <label htmlFor="date" className={styles.label}>

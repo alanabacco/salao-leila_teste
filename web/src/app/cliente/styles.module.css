@@ -30,8 +30,13 @@
   flex-direction: column;
 }
 
-.form input {
+.form input,
+.form select {
   padding: 0.8rem;
+}
+
+.emptyOption {
+  color: #666;
 }
 
 .form button {

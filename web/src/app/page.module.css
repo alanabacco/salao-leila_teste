@@ -17,6 +17,11 @@
   /* border: 1px solid red; */
 }
 
+.aboutContainer,
+.loginContainer {
+  padding-inline: 4rem;
+}
+
 .aboutContainer {
   grid-area: aboutContainer;
   /* border: 1px solid red; */
@@ -68,12 +73,17 @@
   text-align: center;
 }
 
+.info {
+  margin-top: 1.6rem;
+  font-size: 1.2rem;
+}
+
 @media (min-width: 768px) {
   .main {
     min-height: 90vh;
 
     display: grid;
-    gap: 4rem 1.6rem;
+    gap: 4rem 4rem;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
