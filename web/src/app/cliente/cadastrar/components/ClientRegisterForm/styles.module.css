@@ -1,0 +1,10 @@
+.clientRegisterForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.clientRegisterForm button {
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+}

@@ -1,31 +1,13 @@
 .main {
   padding: 4rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .registerContainer {
   max-width: 40rem;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-}
-
-.form div {
-  display: flex;
-  flex-direction: column;
-}
-
-.form input {
-  padding: 0.8rem;
-}
-
-.form button {
-  padding: 0.8rem;
-  border-radius: 0.8rem;
 }
 
 @media (min-width: 768px) {
