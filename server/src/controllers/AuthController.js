@@ -33,13 +33,7 @@ class AuthController {
     try {
       if (name) {
         res.status(200).json({
-          data: {
-            session: {
-              user: {
-                name,
-              },
-            },
-          },
+          data: { session: { user: { name } } },
         });
       }
     } catch (error) {
