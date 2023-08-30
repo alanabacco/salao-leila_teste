@@ -18,7 +18,7 @@ class AuthController {
           typedPassword: typedPassword,
           clientDb: client,
         });
-        return res.status(200).json(accessToken);
+        return res.status(200).json({accessToken, client});
       } else {
         res.status(404).json({ message: "user not found" });
       }

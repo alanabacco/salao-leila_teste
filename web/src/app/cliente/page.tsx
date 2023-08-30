@@ -3,11 +3,14 @@
 import styles from "./styles.module.css";
 import { withSessionHOCClient } from "../services/session";
 import ScheduleForm from "./components/ScheduleForm";
+import { useClientContext } from "../contexts/ClientContext";
 
 async function ClientPage(): Promise<JSX.Element> {
+  const { client } = useClientContext();
+
   return (
     <main className={styles.main}>
-      <h1>Agendamento da Cabeleleila Leila</h1>
+      <h1>Agendamento da Cabeleleila Leila {client.name}</h1>
 
       <div className={styles.container}>
         <section className={styles.formSection}>

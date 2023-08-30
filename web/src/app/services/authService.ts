@@ -17,7 +17,8 @@ export const authService = {
       return await fetch(`${backendUrl}/clientLogin`, fetchOptions).then(async (res) => {
         if (!res.ok) throw new Error("invalid phone or password");
         const body: any = await res.json();
-        tokenService.save(body.accessToken);
+        tokenService.save(body.accessToken.accessToken);
+        return body;
       });
     } catch (error) {
       console.log(error);

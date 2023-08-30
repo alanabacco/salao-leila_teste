@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./styles.module.css";
 import { useRouter } from "next/navigation";
 import { authService } from "@/app/services/authService";
+import { useClientContext } from "@/app/contexts/ClientContext";
 
 // TODO: colocar um alerta de login bem sucedido
 
@@ -17,14 +18,17 @@ interface FormProps extends React.ChangeEvent<HTMLFormElement> {
 export default function LoginForm(): JSX.Element {
   const router = useRouter();
 
-  function handleSubmit(e: FormProps) {
+  const { setClient } = useClientContext();
+
+  async function handleSubmit(e: FormProps) {
     e.preventDefault();
-    authService
+    await authService
       .clientLogin({
         phone: e.target.phone.value,
         password: e.target.password.value,
       })
-      .then(() => {
+      .then((res) => {
+        setClient({ id: res.client?.id, name: res.client?.name, phone: res.client?.phone });
         router.push("/cliente");
       })
       .catch((error) => {

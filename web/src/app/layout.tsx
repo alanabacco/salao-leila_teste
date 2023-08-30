@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import Footer from "./components/Footer";
+import { ClientContextProvider } from "./contexts/ClientContext";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -17,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pr-BR">
       <body className={openSans.className}>
-        {children}
+        <ClientContextProvider>{children}</ClientContextProvider>
         <Footer />
       </body>
     </html>

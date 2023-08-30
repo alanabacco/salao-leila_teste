@@ -33,7 +33,7 @@ export default async function ScheduleForm() {
       date_time: formatedDate.toISOString(),
     };
     const options = {
-      headers: { "Content-Type": "application/json" },
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify(data),
     };
@@ -41,6 +41,8 @@ export default async function ScheduleForm() {
     try {
       fetch(`${backendUrl}/schedules`, options)
         .then((res) => {
+          console.log("res.status", res.status);
+
           if (res.status == 201) {
             return res.body;
           } else {
@@ -66,7 +68,7 @@ export default async function ScheduleForm() {
 
   const services: any[] = await fetch(`${backendUrl}/services`, {
     method: "GET",
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { "Content-Type": "application/json" },
   })
     .then((res) => {
       if (!res.ok) {
