@@ -1,0 +1,45 @@
+
+.formSection {
+  border: 1px solid red;
+  padding: 1.6rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 0.8rem;
+
+  border: 1px solid #ccc;
+}
+.fieldset div {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.form .inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input,
+.form select {
+  padding: 0.8rem;
+}
+
+.emptyOption {
+  color: #666;
+}
+
+.form button {
+  margin-bottom: 0.8rem;
+
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+}
