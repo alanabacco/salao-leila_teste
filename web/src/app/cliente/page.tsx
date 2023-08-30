@@ -1,13 +1,12 @@
+/* eslint-disable @next/next/no-async-client-component */
 "use client";
 
-import { useRouter } from "next/navigation";
 import styles from "./styles.module.css";
-import { FormEvent } from "react";
-import Link from "next/link";
 import { tokenService } from "../services/tokenService";
-import { withSessionHOCClient } from "../services/session";
+// import { withSessionHOCClient } from "../services/session";
 
 // TODO : -notificar agendamento com sucesso..
+// TODO : usar um redux pra saber qual usuario esta conectado...
 
 interface ScheduleProps extends React.ChangeEvent<HTMLFormElement> {
   target: HTMLFormElement & {
@@ -17,9 +16,39 @@ interface ScheduleProps extends React.ChangeEvent<HTMLFormElement> {
 }
 
 async function ClientPage(): Promise<JSX.Element> {
-  const router = useRouter();
   const backendUrl = "http://localhost:8080";
   const token = tokenService.get();
+
+  const timeOptions = [
+    "09:00",
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "12:00",
+    "12:30",
+    "13:00",
+    "13:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+    "17:30",
+    "18:00",
+    "18:30",
+  ];
+
+  const TimeOptions = () => (
+    <datalist id="date-options">
+      {timeOptions.map((time, index) => (
+        <option key={index} value={time} />
+      ))}
+    </datalist>
+  );
 
   const minDate: Date = new Date();
   minDate.setDate(minDate.getDate() + 1);
@@ -62,90 +91,111 @@ async function ClientPage(): Promise<JSX.Element> {
       Number(minutes)
     );
 
-    console.log(formatedDate); // JA ESTOU PEGANDO O ID DOS SERVICES, E A DATA E HORARIO
+    const data = {
+      client_id: Number(1), // ARRUMAR ISSO AQUI
+      service_id: Number(e.target.service.value),
+      date_time: formatedDate.toISOString(),
+    };
+    const options = {
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify(data),
+    };
 
-    // router.push("/");
+    try {
+      fetch(`${backendUrl}/schedules`, options)
+        .then((res) => {
+          if (res.status == 201) {
+            return res.body;
+          } else {
+            alert("Não foi possível agendar agora, tente novamente mais tarde.");
+          }
+        })
+        .then(() => {
+          e.target.service.value = "";
+          e.target.date.value = "";
+          e.target.time.value = "";
+          // NOTIFICAÇÃO DE AGENDADO COM SUCESSO
+        });
+    } catch (error) {
+      console.log(error);
+      alert("Não foi possível agendar agora, tente novamente mais tarde.");
+      throw new Error("Não foi possível cadastrar os dados.");
+    }
   }
 
   return (
     <main className={styles.main}>
       <h1>Agendamento da Cabeleleila Leila</h1>
 
-      <div>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.inputContainer}>
-            <label htmlFor="service" className={styles.label}>
-              Serviço
-            </label>
-            <select name="service" id="service" required>
-              <option value="" selected disabled className={styles.emptyOption}>
-                Selecione uma opção
-              </option>
-              {services.map((service) => {
-                return (
-                  <option value={service.id} key={service.id}>
-                    {service.name}
-                  </option>
-                );
-              })}
-            </select>
+      <div className={styles.container}>
+        <section className={styles.formSection}>
+          <h2>Agendar um serviço</h2>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.inputContainer}>
+              <label htmlFor="service" className={styles.label}>
+                Serviço
+              </label>
+              <select name="service" id="service" required>
+                <option value="" selected disabled className={styles.emptyOption}>
+                  Selecione uma opção
+                </option>
+                {services.map((service) => {
+                  return (
+                    <option value={service.id} key={service.id}>
+                      {service.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+
+            <div className={styles.inputContainer}>
+              <label htmlFor="date" className={styles.label}>
+                Data
+              </label>
+              <input type="date" required id="date" name="date" min={invertedDate} />
+            </div>
+
+            <div className={styles.inputContainer}>
+              <label htmlFor="time" className={styles.label}>
+                Horário
+              </label>
+              <input
+                type="time"
+                required
+                list="date-options"
+                id="time"
+                name="time"
+                min="09:00"
+                max="19:00"
+              />
+
+              <TimeOptions />
+            </div>
+
+            <button type="submit">Agendar</button>
+          </form>
+        </section>
+        <section className={styles.historySection}>
+          <h2>Ver histórico de agendamento</h2>
+          <div>
+            <p>23/08/2023</p>
+            <p>Hidratação no cabelo</p>
           </div>
-
-          <div className={styles.inputContainer}>
-            <label htmlFor="date" className={styles.label}>
-              Data
-            </label>
-            <input type="date" required id="date" name="date" min={invertedDate} />
+          <div>
+            <p>23/08/2023</p>
+            <p>Hidratação no cabelo</p>
           </div>
-
-          <div className={styles.inputContainer}>
-            <label htmlFor="time" className={styles.label}>
-              Horário
-            </label>
-            <input
-              type="time"
-              required
-              list="date-options"
-              id="time"
-              name="time"
-              min="09:00"
-              max="19:00"
-            />
-
-            <datalist id="date-options">
-              <option value="09:00" />
-              <option value="09:30" />
-              <option value="10:00" />
-              <option value="10:30" />
-              <option value="11:00" />
-              <option value="11:30" />
-              <option value="12:00" />
-              <option value="12:30" />
-              <option value="13:00" />
-              <option value="13:30" />
-              <option value="14:00" />
-              <option value="14:30" />
-              <option value="15:00" />
-              <option value="15:30" />
-              <option value="16:00" />
-              <option value="16:30" />
-              <option value="17:00" />
-              <option value="17:30" />
-              <option value="18:00" />
-              <option value="18:30" />
-            </datalist>
+          <div>
+            <p>23/08/2023</p>
+            <p>Hidratação no cabelo</p>
           </div>
-
-          <button type="submit">Agendar</button>
-        </form>
-
-        <div>
-          {/* ideia: abrir historico de agendamento em um modal */}
-          <Link href="">Ver histórico de agendamento</Link>
-        </div>
+        </section>
       </div>
     </main>
   );
 }
 
-export default withSessionHOCClient(ClientPage);
+// export default withSessionHOCClient(ClientPage);
+export default ClientPage;

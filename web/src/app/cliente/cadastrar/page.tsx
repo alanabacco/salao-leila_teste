@@ -41,14 +41,15 @@ export default function ClientRegisterPage(): JSX.Element {
     };
 
     try {
-      fetch(backendUrl, options).then((res) => {
-        if (res.status == 201) {
-          router.push("/");
-          return res.body;
-        } else {
-          alert("Não foi possível cadastrar os dados, tente novamente mais tarde.");
-        }
-      });
+      fetch(backendUrl, options)
+        .then((res) => {
+          if (res.status == 201) {
+            return res.body;
+          } else {
+            alert("Não foi possível cadastrar os dados, tente novamente mais tarde.");
+          }
+        })
+        .then(() => router.push("/"));
     } catch (error) {
       console.log(error);
       alert("Não foi possível cadastrar os dados, tente novamente mais tarde.");
