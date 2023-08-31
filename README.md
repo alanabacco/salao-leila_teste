@@ -71,4 +71,4 @@ npm run dev # rodar o projeto
 
 o frontend estará rodando na porta 3000.
 
-Para testar pode-se usar o cliente com o telefone `16987654321` e senha `123456`, que foi criado no seed do backend.
+Para testar pode-se usar o cliente com o telefone `16987654321` e senha `123456`, que foi criado no seed do backend, ou outros que estejam no banco de dados.
