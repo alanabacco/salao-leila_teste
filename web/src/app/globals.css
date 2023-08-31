@@ -40,14 +40,16 @@ select {
   border-radius: 0.4rem;
 }
 
-input {
+input,
+select {
   font: inherit;
   padding: 0.8rem;
   border-radius: 0.4rem;
   border: 1px solid var(--secondary-color);
 }
 
-input:focus {
+input:focus,
+select:focus {
   border: 2px solid var(--secondary-color);
   outline: 0;
   color: var(--secondary-color);
@@ -68,6 +70,20 @@ button {
 
 button:hover {
   opacity: 0.9;
+}
+
+/* SCROLL BAR */
+*::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--neutral-color-900);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color);
+  border-radius: 0.4rem;
 }
 
 @media (min-width: 768px) {

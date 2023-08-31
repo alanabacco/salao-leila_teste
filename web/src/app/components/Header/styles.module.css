@@ -13,5 +13,10 @@
 
 .title,
 .subtitle {
+  text-align: center;
   font-family: var(--cursive-font);
+}
+
+.subtitle {
+  font-size: 2rem;
 }

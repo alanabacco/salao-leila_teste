@@ -5,27 +5,31 @@ import { withSessionHOCClient } from "../services/session";
 import ScheduleForm from "./components/ScheduleForm";
 import { useClientContext } from "../contexts/ClientContext";
 import ScheduleHistory from "./components/ScheduleHistory";
+import Header from "../components/Header";
 
-async function ClientPage(): Promise<JSX.Element> {
+function ClientPage(): JSX.Element {
   const { client } = useClientContext();
 
   return (
-    <main className={styles.main}>
-      <h1>Agendamento da Cabeleleila Leila</h1>
-      <h2>Olá {client.name}, gostaria de agendar um serviço?</h2>
+    <>
+      <Header />
+      <main className={styles.main}>
+        <h2 className={styles.pageTitle}>Agendamento da Cabeleleila Leila</h2>
+        <h3 className={styles.pageDescription}>Olá {client.name}, gostaria de agendar um serviço?</h3>
 
-      <div className={styles.container}>
-        <section className={styles.formSection}>
-          <h3>Agendar um serviço</h3>
-          <ScheduleForm />
-        </section>
+        <div className={styles.container}>
+          <section className={styles.formSection}>
+            <h3 className={styles.sectionTitle}>Agendar um serviço</h3>
+            <ScheduleForm />
+          </section>
 
-        <section className={styles.historySection}>
-          <h3>Ver histórico de agendamento</h3>
-          <ScheduleHistory />
-        </section>
-      </div>
-    </main>
+          <section className={styles.historySection}>
+            <h3 className={styles.sectionTitle}>Histórico de agendamento</h3>
+            <ScheduleHistory />
+          </section>
+        </div>
+      </main>
+    </>
   );
 }
 

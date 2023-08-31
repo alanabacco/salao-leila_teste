@@ -1,8 +1,7 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { tokenService } from "@/app/services/tokenService";
 import { useClientContext } from "@/app/contexts/ClientContext";
+import styles from "./styles.module.css";
 
 type ScheduleProps = {
   id: number;
@@ -77,11 +76,15 @@ export default function ScheduleHistory() {
   };
 
   return (
-    <div>
+    <div className={styles.cardsContainer}>
       {schedules.map((schedule) => (
-        <div key={schedule.id}>
-          <p>Data: {`${formatDate(schedule.date_time)}h`}</p>
-          <p>Serviço: {serviceNames[schedule.service_id]}</p>
+        <div key={schedule.id} className={styles.card}>
+          <p className={styles.scheduleDate}>
+            Data: {`${formatDate(schedule.date_time)}h`}
+          </p>
+          <p className={styles.scheduleService}>
+            Serviço: {serviceNames[schedule.service_id]}
+          </p>
         </div>
       ))}
     </div>
