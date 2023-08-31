@@ -71,7 +71,7 @@ button:hover {
 }
 
 @media (min-width: 768px) {
-  .main {
+  main {
     min-height: 90vh;
     padding: 4rem 8rem;
   }

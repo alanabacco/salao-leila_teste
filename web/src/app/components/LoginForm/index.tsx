@@ -28,7 +28,11 @@ export default function LoginForm(): JSX.Element {
         password: e.target.password.value,
       })
       .then((res) => {
-        setClient({ id: res.client?.id, name: res.client?.name, phone: res.client?.phone });
+        setClient({
+          id: res.client?.id,
+          name: res.client?.name,
+          phone: res.client?.phone,
+        });
         router.push("/cliente");
       })
       .catch((error) => {
@@ -76,8 +80,8 @@ export default function LoginForm(): JSX.Element {
         Ainda não tem cadastro? <Link href="cliente/cadastrar">Criar cadastro</Link>
       </p>
       <p className={styles.cookiesInfo}>
-        Esse site usa cookies para suas informações de login, ao continuar usando o site
-        você afirma estar de acordo com o uso dos cookies.
+        Este site usa cookies para suas informações de login. Ao continuar usando o site,
+        você estará concordando com o uso dos cookies.
       </p>
     </>
   );

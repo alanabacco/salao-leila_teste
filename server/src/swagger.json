@@ -1,0 +1,19 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Salão da Leila API",
+    "version": "1.0.0"
+  },
+  "description": "API para gerenciamento do salão de beleiza da Leila",
+  "paths": {
+    "/services": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

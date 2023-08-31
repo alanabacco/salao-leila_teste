@@ -3,12 +3,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 2rem;
+}
+
+.pageDescription {
+  max-width: 56rem;
+  font-weight: normal;
+  text-align: center;
 }
 
 .registerContainer {
-  border: 1px solid red;
   min-width: fit-content;
   max-width: 40rem;
+  margin-top: 4rem;
 }
 
 @media (min-width: 768px) {
