@@ -1,18 +1,259 @@
 {
   "openapi": "3.0.0",
   "info": {
+    "version": "1.0.0",
     "title": "Salão da Leila API",
-    "version": "1.0.0"
+    "description": "API para gerenciamento do salão de beleiza da Leila"
   },
-  "description": "API para gerenciamento do salão de beleiza da Leila",
+  "servers": [{ "url": "http://localhost:8080" }],
   "paths": {
-    "/services": {
+    "/clients": {
       "get": {
+        "summary": "Get a list of clients",
+        "operationId": "getClients",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "List of clients"
           }
         }
+      },
+      "post": {
+        "summary": "Create a new client",
+        "operationId": "createClient",
+        "responses": {
+          "200": {
+            "description": "Client created successfully"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "John Doe",
+                "phone": "14987654321",
+                "password": "123456"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schedules": {
+      "get": {
+        "summary": "Get schedules (authentication required)",
+        "operationId": "getSchedules",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of schedules"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new schedule (authentication required)",
+        "operationId": "createSchedule",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Schedule created successfully"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "client_id": 1,
+                "service_id": 1,
+                "date_time": "2023-08-30T15:30:00.000Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schedules/client/{id}": {
+      "get": {
+        "summary": "Get schedules for a specific client (authentication required)",
+        "operationId": "getSchedulesByClientId",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Client ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of schedules for the client"
+          }
+        }
+      }
+    },
+    "/services": {
+      "get": {
+        "summary": "Get a list of services",
+        "operationId": "getServices",
+        "responses": {
+          "200": {
+            "description": "List of services"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new service (authentication required)",
+        "operationId": "createService",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service created successfully"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Penteado"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services/{id}": {
+      "get": {
+        "summary": "Get a service by ID",
+        "operationId": "getServiceById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Service ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service details"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update a service by ID (authentication required)",
+        "operationId": "updateService",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Service ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service updated successfully"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Penteado"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a service by ID (authentication required)",
+        "operationId": "deleteService",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Service ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service deleted successfully"
+          }
+        }
+      }
+    },
+    "/clientLogin": {
+      "post": {
+        "summary": "Client login",
+        "operationId": "ClientLogin",
+        "responses": {
+          "200": {
+            "description": "Login successful"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "phone": "14987654321",
+                "password": "123456"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }
