@@ -39,6 +39,8 @@ cd salao-leila_teste # para entrar na pasta do projeto
 cd server # para entrar na pasta server
 npm install # instalar dependencias
 
+# faça a conexão com o banco de dados em .env primeiro - veja o exemplo em .exemple.env
+
 npm run migrate # para fazer as migrações das tabelas
 npm run seed # para alimentar as tabelas com dados
 
@@ -57,7 +59,7 @@ Você pode ver o banco de dados de forma visual utilizando o [Prisma Studio](htt
 
 O projeto também contém uma documentação da API feita com o [swagger](https://swagger.io/). Para acessar a documentação, basta ir no navegador e acessar a url `http://localhost:8080/api-docs/`.
 
-Para poder fazer as operações que precisam de autenticação, é preciso pegar o token de autenticação: Na interface do Swagger UI, localize a operação de autenticação `/clientLogin` e clique em `Try it out`. Preencha os campos `phone` e `password` com um telefone e senha que esteja no banco de dados. Clique em `Execute` e copie o token que aparecerá. Agora, na parte de cima da página, onde está escrito `Authorize`, cole o token e clique em `Authorize`.
+Para poder fazer as operações que precisam de autenticação, é preciso pegar o token de autenticação: na interface do Swagger UI, localize a operação de autenticação `/clientLogin` e clique em `Try it out`. Preencha os campos `phone` e `password` com um telefone e senha que esteja no banco de dados. Clique em `Execute` e copie o token que aparecerá. Agora, na parte de cima da página, onde está escrito `Authorize`, cole o token e clique em `Authorize`.
 
 ### Para rodar o frontend
 
