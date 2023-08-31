@@ -1,5 +1,6 @@
 import { tokenService } from "@/app/services/tokenService";
 import styles from "./styles.module.css";
+import { useClientContext } from "@/app/contexts/ClientContext";
 
 interface ScheduleProps extends React.ChangeEvent<HTMLFormElement> {
   target: HTMLFormElement & {
@@ -10,6 +11,7 @@ interface ScheduleProps extends React.ChangeEvent<HTMLFormElement> {
 
 export default async function ScheduleForm() {
   const token = tokenService.get();
+  const { client } = useClientContext();
 
   const backendUrl = "http://localhost:8080";
   function handleSubmit(e: ScheduleProps) {
@@ -28,7 +30,7 @@ export default async function ScheduleForm() {
     );
 
     const data = {
-      client_id: Number(1), // ARRUMAR ISSO AQUI
+      client_id: Number(client.id),
       service_id: Number(e.target.service.value),
       date_time: formatedDate.toISOString(),
     };
@@ -105,7 +107,7 @@ const ServiceDropdown = ({ services }: ServiceDropdownProps) => (
   <div className={styles.inputContainer}>
     <label htmlFor="service">Serviço</label>
     <select name="service" id="service" required>
-      <option value="" disabled className={styles.emptyOption}>
+      <option value="" selected disabled className={styles.emptyOption}>
         Selecione uma opção
       </option>
       {services.map((service) => (

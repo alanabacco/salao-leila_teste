@@ -11,6 +11,19 @@ class SchedulesController {
     }
   }
 
+  static async getSchedulesByClientId(req, res, next) {
+    const params = req.params;
+    const clientId = Number(params.id);
+    try {
+      const schedules = await prisma.schedules.findMany({
+        where: { client_id: clientId },
+      });
+      return res.status(200).json(schedules);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   static async createSchedule(req, res, next) {
     const { client_id, service_id, date_time } = req.body;
 

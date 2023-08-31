@@ -1,7 +1,6 @@
 import { tokenService } from "./tokenService";
 
 type AuthServiceProps = { phone: string; password: string };
-// type ResponseProps = { ok: boolean; status: number; statusText: string; body: any };
 
 const backendUrl = "http://localhost:8080";
 

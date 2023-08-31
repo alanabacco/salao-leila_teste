@@ -5,6 +5,11 @@ const authenticator = require("../middlewares/authenticator");
 const router = Router();
 
 router.get("/schedules", authenticator, SchedulesController.getSchedules);
+router.get(
+  "/schedules/client/:id",
+  authenticator,
+  SchedulesController.getSchedulesByClientId
+);
 router.post("/schedules", authenticator, SchedulesController.createSchedule);
 
 module.exports = router;
