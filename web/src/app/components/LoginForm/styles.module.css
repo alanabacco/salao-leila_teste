@@ -9,15 +9,8 @@
   flex-direction: column;
 }
 
-.form input {
-  padding: 0.8rem;
-}
-
 .form button {
   margin-bottom: 0.8rem;
-
-  padding: 0.8rem;
-  border-radius: 0.8rem;
 }
 
 .cookiesInfo {
@@ -28,4 +21,8 @@
 .registerInfo,
 .cookiesInfo {
   text-align: center;
+}
+
+.registerInfo {
+  font-size: 1.6rem;
 }

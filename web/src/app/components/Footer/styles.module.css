@@ -1,10 +1,11 @@
 .footer {
-  border-top: 1px solid black;
-  padding: 1.6rem 0;
+  border-top: 1px solid var(--secondary-color);
+  padding: .8rem 0;
   text-align: center;
 }
 
-.footer a {
+.footer a,
+.footer address {
   text-decoration: none;
   font-size: 1.4rem;
 }
