@@ -6,6 +6,7 @@ export default function About(): JSX.Element {
   return (
     <>
       <Image
+        className={styles.image}
         src={photo}
         height={200}
         alt="Desenho de duas garotas ao ar livre, uma em pé, de vestido rosa e cabelo castanho escuro, a outra está outra sentada, de blusa amarela, calça cinza e cabelo avermelhado. Próximo a elas tem algumas pedras com flores junto. A garota de pé segura uma flor atrás do corpo."

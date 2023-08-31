@@ -17,7 +17,7 @@
 
 .aboutContainer,
 .loginContainer {
-  padding-inline: 4rem;
+  padding-inline: 0;
 }
 
 .aboutContainer {
@@ -42,5 +42,10 @@
     grid-template-areas:
       "title title"
       "aboutContainer loginContainer";
+  }
+
+  .aboutContainer,
+  .loginContainer {
+    padding-inline: 4rem;
   }
 }
