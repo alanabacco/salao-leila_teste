@@ -4,6 +4,9 @@ import { Open_Sans } from "next/font/google";
 import Footer from "./components/Footer";
 import { ClientContextProvider } from "./contexts/ClientContext";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const openSans = Open_Sans({
   subsets: ["latin"],
 });
@@ -21,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ClientContextProvider>{children}</ClientContextProvider>
         <Footer />
       </body>
+      <ToastContainer />
     </html>
   );
 }

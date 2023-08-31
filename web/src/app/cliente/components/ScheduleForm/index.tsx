@@ -1,6 +1,7 @@
 import { tokenService } from "@/app/services/tokenService";
 import styles from "./styles.module.css";
 import { useClientContext } from "@/app/contexts/ClientContext";
+import { toast } from "react-toastify";
 
 interface ScheduleProps extends React.ChangeEvent<HTMLFormElement> {
   target: HTMLFormElement & {
@@ -48,18 +49,18 @@ export default async function ScheduleForm() {
           if (res.status == 201) {
             return res.body;
           } else {
-            alert("Não foi possível agendar agora, tente novamente mais tarde.");
+            toast.error("Não foi possível agendar agora, tente novamente mais tarde.");
           }
         })
         .then(() => {
           e.target.service.value = "";
           e.target.date.value = "";
           e.target.time.value = "";
-          // NOTIFICAÇÃO DE AGENDADO COM SUCESSO
+          toast.success("Agendado com sucesso.");
         });
     } catch (error) {
       console.log(error);
-      alert("Não foi possível agendar agora, tente novamente mais tarde.");
+      toast.error("Não foi possível agendar agora, tente novamente mais tarde.");
       throw new Error("Não foi possível cadastrar os dados.");
     }
   }

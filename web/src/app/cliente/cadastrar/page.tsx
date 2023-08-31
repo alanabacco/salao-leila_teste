@@ -2,9 +2,6 @@ import styles from "./styles.module.css";
 import ClientRegisterForm from "./components/ClientRegisterForm";
 import Header from "@/app/components/Header";
 
-// TODO:
-// - notificação de cadastrado com sucesso
-
 export default function ClientRegisterPage() {
   return (
     <>

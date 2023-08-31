@@ -2,8 +2,6 @@ import styles from "./page.module.css";
 import LoginForm from "./components/LoginForm";
 import About from "./components/About";
 
-// TODO: colocar um alerta de login bem sucedido
-
 export default function Home(): JSX.Element {
   return (
     <>

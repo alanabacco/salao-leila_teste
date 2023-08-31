@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import styles from "./styles.module.css";
 import FormInput from "../FormInput";
+import { toast } from "react-toastify";
 
 interface ClientRegisterFormProps extends React.ChangeEvent<HTMLFormElement> {
   target: HTMLFormElement & {
@@ -23,7 +24,7 @@ export default function ClientRegisterForm(): JSX.Element {
   function handleSubmit(e: ClientRegisterFormProps) {
     e.preventDefault();
     if (!passwordsMatch(e.target.password1.value, e.target.password2.value)) {
-      alert("as senhas devem ser iguais");
+      toast.warn("As senhas devem ser iguais");
       return;
     }
 
@@ -44,13 +45,20 @@ export default function ClientRegisterForm(): JSX.Element {
           if (res.status == 201) {
             return res.body;
           } else {
-            alert("Não foi possível cadastrar os dados, tente novamente mais tarde.");
+            toast.error(
+              "Não foi possível cadastrar os dados agora, tente novamente mais tarde."
+            );
           }
         })
-        .then(() => router.push("/"));
+        .then(() => {
+          toast.success("Cadastrado com sucesso.");
+          router.push("/");
+        });
     } catch (error) {
       console.log(error);
-      alert("Não foi possível cadastrar os dados, tente novamente mais tarde.");
+      toast.error(
+        "Não foi possível cadastrar os dados agora, tente novamente mais tarde."
+      );
       throw new Error("Não foi possível cadastrar os dados.");
     }
   }

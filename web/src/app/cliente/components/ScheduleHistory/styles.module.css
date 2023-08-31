@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  align-items: center;
+}
+
+.cardsContainer p {
+  text-align: center;
+  /* width: 50%; */
 }
 
 .card {
@@ -13,6 +19,11 @@
   justify-content: center;
   gap: 0.4rem;
   padding: 0.4rem;
+  width: 100%;
+}
+
+.card:hover {
+  cursor: pointer;
 }
 
 .scheduleDate {

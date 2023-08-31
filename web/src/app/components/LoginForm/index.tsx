@@ -5,8 +5,7 @@ import styles from "./styles.module.css";
 import { useRouter } from "next/navigation";
 import { authService } from "@/app/services/authService";
 import { useClientContext } from "@/app/contexts/ClientContext";
-
-// TODO: colocar um alerta de login bem sucedido
+import { toast } from "react-toastify";
 
 interface FormProps extends React.ChangeEvent<HTMLFormElement> {
   target: HTMLFormElement & {
@@ -33,11 +32,12 @@ export default function LoginForm(): JSX.Element {
           name: res.client?.name,
           phone: res.client?.phone,
         });
+        toast.success("Login bem sucedido.");
         router.push("/cliente");
       })
       .catch((error) => {
         console.log(error);
-        alert("telefone ou senha inválidos.");
+        toast.error("Telefone ou senha inválidos.");
       });
   }
 
