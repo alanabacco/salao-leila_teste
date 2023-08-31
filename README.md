@@ -2,7 +2,7 @@
 
 ## Sobre o projeto
 
-<!-- Explicar o projeto -->
+Projeto desenvolvido como teste técnico para a empresa [DSIN](https://www.dsin.com.br/). O projeto consiste em um sistema de gerenciamento de um salão de beleza, onde é possível os clientes se cadastrarem, logarem e agendarem um serviço no salão de beleza.
 
 Neste repositório se encontram os diretórios
 
@@ -38,6 +38,7 @@ cd salao-leila_teste # para entrar na pasta do projeto
 ```bash
 cd server # para entrar na pasta server
 npm install # instalar dependencias
+
 npm run migrate # para fazer as migrações das tabelas
 npm run seed # para alimentar as tabelas com dados
 
@@ -50,20 +51,24 @@ obs.: é preciso fazer a **conexão com o banco de dados** em `.env`. Há um arq
 
 Se quiser resetar o banco de dados, rode o comando `npm run reset:db`;
 
-Você pode ver o banco de dados de forma visual utilizando o [Prisma Studio](https://www.prisma.io/studio):
+Você pode ver o banco de dados de forma visual utilizando o [Prisma Studio](https://www.prisma.io/studio): para rodar o prisma studio, abra o terminal e execute o comando: `npx prisma studio`. Ele abrirá o navegador com o prisma studio rodando na porta 5555.
 
-Para rodar o prisma studio abra o terminal e execute o comando: `npx prisma studio`.
+#### Utilizar o swagger ui
+
+O projeto também contém uma documentação da API feita com o [swagger](https://swagger.io/). Para acessar a documentação, basta ir no navegador e acessar a url `http://localhost:8080/api-docs/`.
+
+Para poder fazer as operações que precisam de autenticação, é preciso pegar o token de autenticação: Na interface do Swagger UI, localize a operação de autenticação `/clientLogin` e clique em `Try it out`. Preencha os campos `phone` e `password` com um telefone e senha que esteja no banco de dados. Clique em `Execute` e copie o token que aparecerá. Agora, na parte de cima da página, onde está escrito `Authorize`, cole o token e clique em `Authorize`.
 
 ### Para rodar o frontend
 
 Em outro terminal rode os comandos:
 
 ```bash
-cd web # para entra na pasta web
+cd web # para entrar na pasta web
 npm install # instalar dependencias
 npm run dev # rodar o projeto
 ```
 
 o frontend estará rodando na porta 3000.
 
-Para testar pode-se usar o cliente com o telefone `16987654321` e senha `123456`.
+Para testar pode-se usar o cliente com o telefone `16987654321` e senha `123456`, que foi criado no seed do backend.

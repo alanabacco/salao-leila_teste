@@ -43,7 +43,7 @@ export default function ScheduleHistory() {
         setServiceNames(serviceNameMap);
 
         const scheduleResponse = await fetch(
-          `${backendUrl}/schedules/client/${1}`, // client.id
+          `${backendUrl}/schedules/client/${client.id}`,
           serviceOptions
         );
         if (!scheduleResponse.ok) {
@@ -77,16 +77,25 @@ export default function ScheduleHistory() {
 
   return (
     <div className={styles.cardsContainer}>
-      {schedules.map((schedule) => (
-        <div key={schedule.id} className={styles.card}>
-          <p className={styles.scheduleDate}>
-            Data: {`${formatDate(schedule.date_time)}h`}
-          </p>
-          <p className={styles.scheduleService}>
-            Serviço: {serviceNames[schedule.service_id]}
-          </p>
-        </div>
-      ))}
+      <p>
+        Clique para poder editar o agendamento, <br />
+        apenas antes de 2 dias de sua data.
+      </p>
+
+      {schedules.length > 0 ? (
+        schedules.map((schedule) => (
+          <div key={schedule.id} className={styles.card}>
+            <p className={styles.scheduleDate}>
+              Data: {`${formatDate(schedule.date_time)}h`}
+            </p>
+            <p className={styles.scheduleService}>
+              Serviço: {serviceNames[schedule.service_id]}
+            </p>
+          </div>
+        ))
+      ) : (
+        <p>Nenhum agendamento encontrado.</p>
+      )}
     </div>
   );
 }

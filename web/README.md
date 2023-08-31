@@ -2,6 +2,8 @@
 
 ## Sobre o projeto
 
+Projeto desenvolvido como teste técnico para a empresa [DSIN](https://www.dsin.com.br/). O projeto consiste em um sistema de gerenciamento de um salão de beleza, onde é possível os clientes se cadastrarem, logarem e agendarem um serviço no salão de beleza.
+
 ## Ferramentas e tecnologias utilizadas
 
 - [React](https://react.dev/)
