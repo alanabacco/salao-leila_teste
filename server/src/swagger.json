@@ -79,6 +79,70 @@
             }
           }
         }
+      },
+      "patch": {
+        "summary": "Update a schedule by ID (authentication required)",
+        "operationId": "updateSchedule",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Schedule ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service updated successfully"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "client_id": 1,
+                "service_id": 1,
+                "date_time": "2023-08-30T15:30:00.000Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schedules/{id}": {
+      "get": {
+        "summary": "Get schedules by ID (authentication required)",
+        "operationId": "getSchedulesById",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Schedule by ID"
+          }
+        }
       }
     },
     "/schedules/client/{id}": {

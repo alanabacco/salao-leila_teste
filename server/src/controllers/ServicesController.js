@@ -16,8 +16,9 @@ class ServicesController {
     const id = Number(params.id);
 
     try {
-      const service = await prisma.services.findUniqueOrThrow({ where: { id } });
-      return res.status(200).json(service);
+      const serviceById = await prisma.services.findUnique({ where: { id } });
+      if (!serviceById) return res.status(404).json({ message: "service not found" });
+      return res.status(200).json(serviceById);
     } catch (error) {
       console.log(error);
     }

@@ -11,5 +11,7 @@ router.get(
   SchedulesController.getSchedulesByClientId
 );
 router.post("/schedules", authenticator, SchedulesController.createSchedule);
+router.get("/schedules/:id", authenticator, SchedulesController.getScheduleById);
+router.patch("/schedules/:id", authenticator, SchedulesController.updateSchedule);
 
 module.exports = router;
