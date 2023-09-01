@@ -6,10 +6,10 @@ Projeto desenvolvido como teste técnico para a empresa [DSIN](https://www.dsin.
 
 <figure align="center">
     <img alt="Pagina inicial do projeto, onde é possível o cliente fazer login para fazer os agendamentos do salão de beleza" src="./web/public/home-page2.png">
-    <figcaption>Página inicial</figcaption>
+    <figcaption align="center">Página inicial</figcaption>
 </figure>
 
-
+<br />
 
 Neste repositório se encontram os diretórios:
 
