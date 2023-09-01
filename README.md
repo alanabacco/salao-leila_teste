@@ -4,6 +4,11 @@
 
 Projeto desenvolvido como teste técnico para a empresa [DSIN](https://www.dsin.com.br/). O projeto consiste em um sistema de gerenciamento de um salão de beleza, onde é possível os clientes se cadastrarem, logarem e agendarem um serviço no salão de beleza.
 
+<figure align="center">
+    <img alt="Pagina inicial do projeto, onde é possível o cliente fazer login para fazer os agendamentos do salão de beleza" src="./web/public/home-page2.png">
+    <figcaption>Página inicial</figcaption>
+</figure>
+
 Neste repositório se encontram os diretórios
 
 - [server](https://github.com/alanabacco/salao-leila_teste/tree/main/server), que contém o backend da aplicação;
