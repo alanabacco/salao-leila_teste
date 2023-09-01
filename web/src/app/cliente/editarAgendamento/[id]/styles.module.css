@@ -1,0 +1,29 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 0;
+}
+
+.formSection {
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.4rem;
+  padding: 1.6rem;
+  min-width: 32rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.cancelButton {
+  color: var(--secondary-color);
+  background-color: transparent;
+}

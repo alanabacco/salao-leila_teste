@@ -32,7 +32,7 @@ export default function LoginForm(): JSX.Element {
           name: res.client?.name,
           phone: res.client?.phone,
         });
-        toast.success("Login bem sucedido.");
+        toast.success("Login bem sucedido. Aguarde.");
         router.push("/cliente");
       })
       .catch((error) => {

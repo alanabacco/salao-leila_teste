@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { tokenService } from "@/app/services/tokenService";
 import { useClientContext } from "@/app/contexts/ClientContext";
 import styles from "./styles.module.css";
+import Link from "next/link";
+import { toast } from "react-toastify";
 
 type ScheduleProps = {
   id: number;
@@ -52,6 +54,7 @@ export default function ScheduleHistory() {
         const scheduleData: ScheduleProps[] = await scheduleResponse.json();
         setSchedules(scheduleData);
       } catch (error) {
+        toast.error("Erro ao carregar agendamentos.");
         console.error("Error fetching data:", error);
       }
     };
@@ -84,14 +87,18 @@ export default function ScheduleHistory() {
 
       {schedules.length > 0 ? (
         schedules.map((schedule) => (
-          <div key={schedule.id} className={styles.card}>
+          <Link
+            key={schedule.id}
+            className={styles.card}
+            href={`/cliente/editarAgendamento/agendamento?id=${schedule.id}`}
+          >
             <p className={styles.scheduleDate}>
               Data: {`${formatDate(schedule.date_time)}h`}
             </p>
             <p className={styles.scheduleService}>
               Serviço: {serviceNames[schedule.service_id]}
             </p>
-          </div>
+          </Link>
         ))
       ) : (
         <p>Nenhum agendamento encontrado.</p>

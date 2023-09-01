@@ -1,25 +1,7 @@
-.formSection {
-  border: 1px solid red;
-  padding: 1.6rem;
-}
-
 .form {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-}
-
-.fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  padding: 0.8rem;
-
-  border: 1px solid #ccc;
-}
-.fieldset div {
-  display: flex;
-  gap: 0.8rem;
 }
 
 .form .inputContainer {
