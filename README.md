@@ -74,3 +74,7 @@ npm run dev # rodar o projeto
 o frontend estará rodando na porta 3000.
 
 Para testar pode-se usar o cliente com o telefone `16987654321` e senha `123456`, que foi criado no seed do backend, ou outros que estejam no banco de dados.
+
+---
+
+obs.: Existem dois componentes/páginas incompletas no frontend: a página de editar agendamento e a página do salão que mostra todos os agendamentos. Infelizmente, esses componentes não foram finalizados devido do limite de tempo.
