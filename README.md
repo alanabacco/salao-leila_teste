@@ -8,8 +8,10 @@ Projeto desenvolvido como teste técnico para a empresa [DSIN](https://www.dsin.
     <img alt="Pagina inicial do projeto, onde é possível o cliente fazer login para fazer os agendamentos do salão de beleza" src="./web/public/home-page2.png">
     <figcaption>Página inicial</figcaption>
 </figure>
-<br />
-Neste repositório se encontram os diretórios
+
+
+
+Neste repositório se encontram os diretórios:
 
 - [server](https://github.com/alanabacco/salao-leila_teste/tree/main/server), que contém o backend da aplicação;
 - [web](https://github.com/alanabacco/salao-leila_teste/tree/main/web), contendo o frontend.
