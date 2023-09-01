@@ -15,6 +15,7 @@ export default function ScheduleUpdate() {
 
   const backendUrl = "http://localhost:8080";
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [services, setServices] = useState([
     { id: 1, name: "Penteado" },
     { id: 2, name: "Corte Cabelo" },

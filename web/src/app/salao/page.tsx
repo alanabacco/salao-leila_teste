@@ -1,9 +1,9 @@
 import Header from "../components/Header";
-import { tokenService } from "../services/tokenService";
+// import { tokenService } from "../services/tokenService";
 import styles from "./styles.module.css";
 
 export default async function SalaoPage() {
-  const token = tokenService.get();
+  // const token = tokenService.get();
   const backendUrl = "http://localhost:8080";
 
   const options = {
