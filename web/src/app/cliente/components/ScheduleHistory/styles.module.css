@@ -7,7 +7,6 @@
 
 .cardsContainer p {
   text-align: center;
-  /* width: 50%; */
 }
 
 .card {
@@ -20,16 +19,10 @@
   gap: 0.4rem;
   padding: 0.4rem;
   width: 100%;
+  text-decoration: none;
 }
 
-.card:hover {
-  cursor: pointer;
-}
-
-.scheduleDate {
-  text-align: center;
-}
-
+.scheduleDate,
 .scheduleService {
   text-align: center;
 }
